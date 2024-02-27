@@ -1,0 +1,2 @@
+SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
+Display(spi, dc=Pin(17), cs=Pin(5), rst=Pin(16))

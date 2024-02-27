@@ -4,6 +4,9 @@ from random import random, seed
 from ssd1351 import Display, color565
 from utime import sleep_us, ticks_cpu, ticks_us, ticks_diff
 
+# Import board-specific configuration
+from demo_const import demo_const
+
 
 class Box(object):
     """Bouncing box."""
@@ -79,8 +82,8 @@ def test():
     """Bouncing box."""
     try:
         # Baud rate of 14500000 seems about the max
-        spi = SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
-        display = Display(spi, dc=Pin(17), cs=Pin(5), rst=Pin(16))
+        spi = demo_const.get_spi()
+        display = demo_const.get_display(spi)
         display.clear()
 
         colors = [color565(255, 0, 0),

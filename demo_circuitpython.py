@@ -6,6 +6,7 @@ from ssd1351 import Display, color565
 from xglcd_font import XglcdFont
 from time import monotonic, sleep
 from sys import exit, implementation
+from demo_const import demo_const
 
 
 class BouncingSprite(object):
@@ -103,10 +104,10 @@ def test():
         rst_pin = DigitalInOut(board.P0_20)
 
         # Setup SPI bus using hardware SPI:
-        spi = SPI(clock=board.P0_24, MOSI=board.P0_22)
+        spi = demo_const.get_spi()
 
         # Create the SSD1351 display:
-        display = Display(spi, dc=dc_pin, cs=cs_pin, rst=rst_pin)
+        display = demo_const.get_display(spi)
         display.clear()
 
         # Load Fixed Font

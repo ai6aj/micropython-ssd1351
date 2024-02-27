@@ -2,7 +2,7 @@
 from ssd1351 import Display
 from machine import Pin, SPI
 from utime import sleep_us, ticks_us, ticks_diff
-
+from demo_const import demo_const
 
 class BouncingSprite(object):
     """Bouncing Sprite."""
@@ -90,9 +90,8 @@ class BouncingSprite(object):
 def test():
     """Bouncing sprite."""
     try:
-        # Baud rate of 14500000 seems about the max
-        spi = SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
-        display = Display(spi, dc=Pin(17), cs=Pin(5), rst=Pin(16))
+        spi = demo_const.get_spi()
+        display = demo_const.get_display(spi)
         display.clear()
 
         # Load sprite

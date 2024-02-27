@@ -2,7 +2,7 @@
 from time import sleep
 from ssd1351 import Display, color565
 from machine import Pin, SPI
-
+from demo_const import demo_const
 
 def hsv_to_rgb(h, s, v):
     """
@@ -44,8 +44,8 @@ def hsv_to_rgb(h, s, v):
 def test():
     """Test code."""
     # Baud rate of 14500000 seems about the max
-    spi = SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
-    display = Display(spi, dc=Pin(17), cs=Pin(5), rst=Pin(16))
+    spi = demo_const.get_spi()
+    display = demo_const.get_display(spi)
 
     c = 0
     for x in range(0, 128, 16):

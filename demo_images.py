@@ -2,12 +2,12 @@
 from time import sleep
 from ssd1351 import Display
 from machine import Pin, SPI
-
+from demo_const import demo_const
 
 def test():
     """Test code."""
-    spi = SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
-    display = Display(spi, dc=Pin(17), cs=Pin(5), rst=Pin(16))
+    spi = demo_const.get_spi()
+    display = demo_const.get_display(spi)
 
     display.draw_image('images/RaspberryPiWB128x128.raw', 0, 0, 128, 128)
     sleep(5)

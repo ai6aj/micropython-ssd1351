@@ -6,7 +6,7 @@ from math import sqrt
 from os import stat
 from random import randint, seed
 from xglcd_font import XglcdFont
-
+from demo_const import demo_const
 
 class Ball(object):
     """Ball."""
@@ -406,8 +406,8 @@ def load_level(level, display):
 def main():
     """Initialize display."""
     # Baud rate of 14500000 seems about the max
-    spi = SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
-    display = Display(spi, dc=Pin(17), cs=Pin(5), rst=Pin(16))
+    spi = demo_const.get_spi()
+    display = demo_const.get_display(spi)
 
     # Draw background image
     display.draw_image('images/Arkanoid_Border128x118.raw', 0, 10, 128, 118)

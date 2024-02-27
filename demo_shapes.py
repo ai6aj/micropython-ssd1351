@@ -2,14 +2,15 @@
 from time import sleep
 from ssd1351 import Display, color565
 from machine import Pin, SPI
+from demo_const import demo_const
 
 
 def test():
     """Test code."""
     # Baud rate of 14500000 seems about the max
-    spi = SPI(2, baudrate=14500000, sck=Pin(18), mosi=Pin(23))
+    spi = demo_const.get_spi()
     print('spi started')
-    display = Display(spi, dc=Pin(17), cs=Pin(5), rst=Pin(16))
+    display = demo_const.get_display(spi)
     print('display started')
 
     display.clear(color565(64, 0, 255))
